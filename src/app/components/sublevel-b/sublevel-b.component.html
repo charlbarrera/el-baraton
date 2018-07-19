@@ -1,0 +1,8 @@
+<div *ngFor="let sub of sublevelb" class="pl-3">
+  <a href="#" mat-button (click)="sub.categoryc = !sub.categoryc" class=" btn active" [routerLink]="['/productos', sub.id]">
+    {{sub.name}}
+  </a>
+  <div *ngIf="sub.categoryc">
+    <app-sublevel-c [sublevelc]="sub.sublevels"></app-sublevel-c>
+  </div>
+</div>

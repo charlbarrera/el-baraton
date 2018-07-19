@@ -1,0 +1,14 @@
+<mat-accordion *ngFor="let cat of categories" >
+  <mat-expansion-panel (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title >
+        {{cat.name}}
+      </mat-panel-title>
+      <!-- <mat-panel-description class="mr-5">
+       {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description> -->
+    </mat-expansion-panel-header>
+    <app-sublevel-a [sublevels]="cat.sublevels"></app-sublevel-a>
+  </mat-expansion-panel>
+</mat-accordion>
