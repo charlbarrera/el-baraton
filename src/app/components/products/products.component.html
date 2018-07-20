@@ -1,3 +1,59 @@
-<div>
-  {{products}}
+
+<mat-toolbar class="">
+  <div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-sm-4">
+        <label class="example-margin">Buscar por precio: </label>
+        <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
+      </div>
+      <div class="col-sm-4">
+        <label class="example-margin">Cantidad en stock: </label>
+        <mat-slider class="example-margin" [(ngModel)]="stock"></mat-slider>
+      </div>
+       <div class="p-2 col-sm-4">
+          <mat-checkbox class="example-margin" [(ngModel)]="dispoible">Productos disponibles</mat-checkbox>
+        </div>
+      </div>
+      <div >
+
+        <div >
+          <label class="example-margin col-md-2">Ordenar por: </label>
+          <mat-radio-group [(ngModel)]="color">
+            <mat-radio-button class="example-margin col-12 col-md-2" value="primary">
+              Precio 
+            </mat-radio-button>
+            <mat-radio-button class="example-margin col-12 col-md-2" value="accent">
+              Disponibilidad 
+            </mat-radio-button>
+            <mat-radio-button class="example-margin col-md-2" value="warn">
+              Cantidad
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+  </div>
+  </mat-toolbar>
+
+<div  class="container card">
+  <div class="row justify-content-center">
+  <div *ngFor="let pro of products" class="col-md-3 m-3">
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>  {{pro.name | uppercase}}</mat-card-title>
+          <mat-card-subtitle *ngIf="pro.available == true">Disponible</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="pro.available == false">No Disponible</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          {{pro.price}}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="addtoCart(pro)">Agregar al carrito</button>
+          <!-- <button mat-button>SHARE</button> -->
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 </div>

@@ -19,7 +19,7 @@ export class SidenavContentComponent implements OnInit {
 
   ngOnInit() {
     this.categories = this._sidenavservice.getData();
-    console.log(this.categories)
+ 
   }
 
   productId(id){

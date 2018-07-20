@@ -15,16 +15,29 @@ export class SidenavContentService {
   products = products;
   category = categories;
 
+  productCart:any =[];
+
   getData(){
     return this.category
   }
 
   getProduct(_id){
-    console.log(this.products.map((id)=> id.sublevel_id).filter(sublevelId => sublevelId == _id));  
+    const objetosFiltrados = this.products.filter(sublevelId => sublevelId.sublevel_id  == _id);  
+      return objetosFiltrados;
+  }
+
+  enlistCart(product){
+    this.productCart.push(product);
+    if(this.productCart.length > 0)
+     () => this.productCart.length;
     
   }
 
-
+  getProductCart(){
+    return this.productCart.length;
+  }
+  
+  
   // getJson(): Observable {
   //   return this.http.get('./assets/i18n/en.json')
   //       .pipe(map((response: Response) => {

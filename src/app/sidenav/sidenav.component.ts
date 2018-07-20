@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import { SidenavContentService } from '../components/sidenav-content.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  numeroItemsCart:any;
 
-  ngOnInit() {
+  constructor(private _sidenavservice: SidenavContentService) {
   }
 
+  ngOnInit() {
+    this.numeroItemsCart = this._sidenavservice.getProductCart();
+  }
+
+  listCart(){
+    this.numeroItemsCart = this._sidenavservice.getProductCart();
+    console.log(this.numeroItemsCart)
+  }
+  options: FormGroup;
+
+
+
+
 }
+
+

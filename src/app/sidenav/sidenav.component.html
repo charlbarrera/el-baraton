@@ -1,21 +1,36 @@
-<mat-toolbar color="primary" >
+
+<mat-toolbar color="primary">
+    
          <button mat-button class="col-1" (click)="sidenav.toggle()">
            <i class="material-icons">reorder</i> 
           </button>
           <div class="container">
-            <div class="row">
-                <h1 class=" ml-10 col-2 ">El Baratón</h1>
-              </div> 
+              
+              <div class="d-flex bd-highlight">
+                  <div class="p-2 bd-highlight">El Baratón</div>
+                  <div class="p-2 ml-auto bd-highlight">
+                    <button mat-button (click)="listCart()">
+
+                      <i class="material-icons" matBadge={{numeroItemsCart}} matBadgeColor="warn">shopping_cart</i>  
+                    </button>
+                  </div>
+                  
+             </div>
+            
           </div>
 </mat-toolbar>  
 
 
-<mat-sidenav-container class="sidenav-container ">
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav">
       <!-- content of sidenav -->
       <app-sidenav-content></app-sidenav-content>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav position="end" #sidenavR >
+      hola
+  </mat-sidenav>
+  <mat-sidenav-content autosize>
       <router-outlet></router-outlet>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

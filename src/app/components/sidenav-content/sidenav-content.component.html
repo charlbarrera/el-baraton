@@ -3,7 +3,10 @@
   (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title >
-        {{cat.name}}
+        <a href="#" mat-button color="primary" [routerLink]="['/productos' , cat.id]" (click)="productId(cat.id)">
+
+          {{cat.name}}
+        </a>
       </mat-panel-title>
       <!-- <mat-panel-description class="mr-5">
        {{panelOpenState ? 'open' : 'closed'}}
