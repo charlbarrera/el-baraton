@@ -18,25 +18,25 @@
 
         <div >
           <label class="example-margin col-md-2">Ordenar por: </label>
-          <mat-radio-group [(ngModel)]="color">
-            <mat-radio-button class="example-margin col-12 col-md-2" value="primary">
+          <mat-radio-group [(ngModel)]="orden">
+            <mat-radio-button class="example-margin col-12 col-md-2" value="price">
               Precio 
             </mat-radio-button>
-            <mat-radio-button class="example-margin col-12 col-md-2" value="accent">
+            <mat-radio-button class="example-margin col-12 col-md-2" value="available">
               Disponibilidad 
             </mat-radio-button>
-            <mat-radio-button class="example-margin col-md-2" value="warn">
+            <mat-radio-button class="example-margin col-md-2" value="quantity">
               Cantidad
             </mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
   </div>
-  </mat-toolbar>
+</mat-toolbar>
 
 <div  class="container card">
   <div class="row justify-content-center">
-  <div *ngFor="let pro of products" class="col-md-3 m-3">
+  <div *ngFor="let pro of products | orderBy: order" class="col-md-3 m-3">
 
       <mat-card class="example-card">
         <mat-card-header>
@@ -47,7 +47,7 @@
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
-          {{pro.price}}
+          {{pro.price | orderBy:order}}
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="primary" (click)="addtoCart(pro)">Agregar al carrito</button>

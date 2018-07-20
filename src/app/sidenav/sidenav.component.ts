@@ -20,7 +20,7 @@ export class SidenavComponent implements OnInit {
 
   listCart(){
     this.numeroItemsCart = this._sidenavservice.getProductCart();
-    console.log(this.numeroItemsCart)
+   
   }
   options: FormGroup;
 

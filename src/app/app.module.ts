@@ -7,6 +7,8 @@ import { MaterialModule } from './material/material.module';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { OrderModule } from 'ngx-order-pipe';
+
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { SidenavContentComponent } from './components/sidenav-content/sidenav-content.component';
@@ -30,14 +32,15 @@ const appRouter:Routes=[
     SublevelBComponent,
     SublevelCComponent,
     ProductsComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     RouterModule.forRoot(appRouter),
     BrowserModule,
     MaterialModule,
     BrowserAnimationsModule,
-    FormsModule 
+    FormsModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
