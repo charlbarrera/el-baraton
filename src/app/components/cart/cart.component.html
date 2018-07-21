@@ -1,0 +1,16 @@
+<mat-horizontal-stepper>
+  <mat-step>
+    <h1 for="">tu lista de productos</h1>
+    <div *ngFor="let pro of cartList">
+      <label for="" >{{pro.name}}</label>
+    </div>
+    <button mat-raised-button color="primary" matStepperNext>Quiero Comprarlos!</button>
+  </mat-step>
+  <mat-step>
+    <label for="">Completar compra</label>
+    <div>
+
+      <button mat-raised-button color="primary">Comprar</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

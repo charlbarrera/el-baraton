@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SidenavContentService } from '../sidenav-content.service';
 import 'hammerjs/hammer';
 import { Params, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { Observable, Subject } from '../../../../node_modules/rxjs';
+
+
 
 
 @Component({
@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
    
   ) { 
     }
-    private subjet = new Subject<any>();
+   
     producttoCart=[];
     products:any;
     
@@ -41,15 +41,8 @@ export class ProductsComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => 
           this.products = this.sidenavservice.getProduct(params.id));
-
-         this.subjet.next(this.orden); 
-         this.getOrden().subscribe(orden=> this.order=orden);
-         console.log(this.order)
   }
 
-  getOrden():Observable<any>{
-    return this.subjet.asObservable();
-  }
 
   addtoCart(product){
     this.sidenavservice.enlistCart(product);

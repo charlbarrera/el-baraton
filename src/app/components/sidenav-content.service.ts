@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 // import { map, take, catchError } from 'rxjs/operators';
 import { categories } from './categories';
 import { products } from './products';
+import { Subject, Observable } from '../../../node_modules/rxjs';
 
 
 @Injectable({
@@ -17,6 +18,8 @@ export class SidenavContentService {
 
   productCart:any =[];
 
+  private subject$ = new Subject;
+
   getData(){
     return this.category
   }
@@ -28,32 +31,12 @@ export class SidenavContentService {
 
   enlistCart(product){
     this.productCart.push(product);
-    if(this.productCart.length > 0)
-     () => this.productCart.length;
-    
-  }
-
-  getProductCart(){
-    return this.productCart.length;
+    this.subject$.next(this.productCart);
   }
   
+  getProductCart():Observable<any>{
+    return this.subject$.asObservable();
+  }
   
-  // getJson(): Observable {
-  //   return this.http.get('./assets/i18n/en.json')
-  //       .pipe(map((response: Response) => {
-  //           return response.json();
-  //       }
-  //   ))
-  //   throw()=>catchError();
-  //   } 
-
-  // getJson(){
-  //   let path = './product.json';
-  //   return this.http.get(path);
-  // }
-
-  // getFile(){
-  //    this.getJson().map( data =>  {return data.son()})
-  // }
 
 }

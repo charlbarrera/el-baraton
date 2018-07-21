@@ -17,6 +17,7 @@ import { SublevelBComponent } from './components/sublevel-b/sublevel-b.component
 import { SublevelCComponent } from './components/sublevel-c/sublevel-c.component';
 import { ProductsComponent } from './components/products/products.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const appRouter:Routes=[
   {path:'productos/:id', component: ProductsComponent},
@@ -33,6 +34,7 @@ const appRouter:Routes=[
     SublevelCComponent,
     ProductsComponent,
     WelcomeComponent,
+    CartComponent,
   ],
   imports: [
     RouterModule.forRoot(appRouter),
@@ -43,6 +45,7 @@ const appRouter:Routes=[
     OrderModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[CartComponent]
 })
 export class AppModule { }
