@@ -3,8 +3,7 @@
   (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title >
-        <a href="#" mat-button color="primary" [routerLink]="['/productos' , cat.id]" (click)="productId(cat.id)">
-
+        <a href="#" class="btn active panel" mat-button color="primary" [routerLink]="['/productos' , cat.id]" (click)="productId(cat.id)">
           {{cat.name}}
         </a>
       </mat-panel-title>
@@ -12,6 +11,9 @@
        {{panelOpenState ? 'open' : 'closed'}}
       </mat-panel-description> -->
     </mat-expansion-panel-header>
-    <app-sublevel-a [sublevels]="cat.sublevels"></app-sublevel-a>
+    <div class="expansion-panel">
+
+      <app-sublevel-a [sublevels]="cat.sublevels"></app-sublevel-a>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>

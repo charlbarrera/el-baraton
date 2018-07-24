@@ -1,56 +1,47 @@
 
-<mat-toolbar class="">
   <div class="container ">
-    <div class="row justify-content-center">
-      <div class="col-sm-4">
-        <label class="example-margin">Buscar por precio: </label>
-        <mat-slider class="example-margin" [(ngModel)]="value"></mat-slider>
-      </div>
-      <div class="col-sm-4">
-        <label class="example-margin">Cantidad en stock: </label>
-        <mat-slider class="example-margin" [(ngModel)]="stock"></mat-slider>
-      </div>
-       <div class="p-2 col-sm-4">
-          <mat-checkbox class="example-margin" [(ngModel)]="dispoible">Productos disponibles</mat-checkbox>
-        </div>
-      </div>
-      <div >
-
-        <div >
-          <label class="example-margin col-md-2">Ordenar por: </label>
+        <div class="m-10 col-md-12">
+          <label class="example-margin col-md-2 mt-3">Ordenar por: </label>
           <mat-radio-group [(ngModel)]="orden">
-            <mat-radio-button class="example-margin col-12 col-md-2" value="price">
+            <mat-radio-button class="example-margin col-12 col-md-2 m-3" value="price">
               Precio 
             </mat-radio-button>
-            <mat-radio-button class="example-margin col-12 col-md-2" value="available">
+            <mat-radio-button class="example-margin col-12 col-md-2 m-3" value="available">
               Disponibilidad 
             </mat-radio-button>
-            <mat-radio-button class="example-margin col-md-2" value="quantity">
+            <mat-radio-button class="example-margin col-md-2 m-3" value="quantity">
               Cantidad
             </mat-radio-button>
           </mat-radio-group>
         </div>
-      </div>
   </div>
-</mat-toolbar>
+
 
 <div  class="container card">
   <div class="row justify-content-center">
-  <div *ngFor="let pro of products | orderBy: order" class="col-md-3 m-3">
+  <div *ngFor="let pro of (products|filtrador:orden ); let index=index" class="col-md-4 col-lg-3 m-3">
 
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>  {{pro.name | uppercase}}</mat-card-title>
-          <mat-card-subtitle *ngIf="pro.available == true">Disponible</mat-card-subtitle>
-          <mat-card-subtitle *ngIf="pro.available == false">No Disponible</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="pro.available == true">
+                    <h3><span class="badge badge-success">Disponible</span></h3>
+          </mat-card-subtitle>
+          <mat-card-subtitle *ngIf="pro.available == false">
+              <h4><span class="badge badge-danger">No disponible</span></h4>
+          </mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image [src]="'https://picsum.photos/200/150/?random' + index">
         <mat-card-content>
-          {{pro.price | orderBy:order}}
+          <h5>
+           $ {{pro.price}}
+          </h5>
+          {{pro.quantity}} en Stock
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary" (click)="addtoCart(pro)">Agregar al carrito</button>
+          <button mat-raised-button color="primary" (click)="addtoCart(pro)" *ngIf="pro.available"  >Agregar al carrito</button>
+          <button mat-raised-button disabled *ngIf="pro.available==false">Agregar al carrito</button>
           <!-- <button mat-button>SHARE</button> -->
         </mat-card-actions>
       </mat-card>

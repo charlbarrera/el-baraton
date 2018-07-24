@@ -19,10 +19,4 @@ export class SublevelAComponent implements OnInit {
   ngOnInit() {
   }
 
-  productId(id){
-    
-    console.log(this._service.getProduct(id));
-    console.log(id)
-  }
-
 }

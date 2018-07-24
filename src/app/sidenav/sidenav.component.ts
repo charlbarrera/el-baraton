@@ -25,29 +25,42 @@ export class SidenavComponent implements OnInit {
   matDialag:MatDialogRef<CartComponent>
 
   constructor(private _sidenavservice: SidenavContentService, public dialog: MatDialog) {
+
   }
+
 
   ngOnInit() {
+
+    if(localStorage.getItem('other')===null){
     this.numeroItemsCart = this._sidenavservice.getProductCart()
-    .subscribe((orden)=> this.numeroItemsCart = orden);
+    .subscribe((orden)=> this.numeroItemsCart=orden);
+
+    }else{
+     this.numeroItemsCart=  JSON.parse(localStorage.getItem('other'));
+     this._sidenavservice.getProductCart()
+     .subscribe((orden)=> { 
+       
+        this.numeroItemsCart.push( orden ) ;
+        console.log(orden);
+    
+    } );
+    }   
+
   }
 
-  listCart(){
-     this.matDialag = this.dialog.open(CartComponent);  
-  }
-  
-  options: FormGroup;
-
-  animal: string;
-  name: string;
-
-
-  openDialog(): void {
-    this.matDialag = this.dialog.open(CartComponent, {
-      width:'600px',
-      height:'400px',
-      data:{product: this.numeroItemsCart}
-    });
+    options: FormGroup;    
+    animal: string;
+    name: string;
+    
+    
+    openDialog(): void {
+      this.matDialag = this.dialog.open(CartComponent, {
+        width:'600px',
+        height:'400px',
+        data:{product: this.numeroItemsCart}
+      });
+      
+      
   }
 
 

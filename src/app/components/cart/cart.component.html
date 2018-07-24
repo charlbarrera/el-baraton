@@ -1,16 +1,43 @@
-<mat-horizontal-stepper>
+<mat-vertical-stepper>
   <mat-step>
-    <h1 for="">tu lista de productos</h1>
+      <ng-template matStepLabel>Tu lista de compras</ng-template>
     <div *ngFor="let pro of cartList">
-      <label for="" >{{pro.name}}</label>
-    </div>
+       <div MatInputModule>
+
+          <label for="" class="p-2" >{{pro.name}}</label>
+          <label for="" class="p-2">$ {{pro.price}}</label>
+          <label for="" class="p-2 col-12 col-md-3">Cantidad: {{pro.cantidad}}</label>
+          <button mat-raised-button color="warn" class="float-right" (click)="delete(pro)">Eliminar</button>
+          <button mat-raised-button class="float-right"  (click)="editar(pro)">Cantidad</button>
+        </div>
+        <div *ngIf="pro.editable == true">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Unidades</label>
+                </div>
+                <select class="custom-select" [(ngModel)]="pro.cantidad">
+                  <option selected value="1">Uno</option>
+                  <option value="2">dos</option>
+                  <option value="3">tres</option>
+                  <option value="4">Cuatro</option>
+                </select>
+              </div>
+        </div>   
+        <br>
+    </div>  
     <button mat-raised-button color="primary" matStepperNext>Quiero Comprarlos!</button>
   </mat-step>
   <mat-step>
-    <label for="">Completar compra</label>
+      <ng-template matStepLabel>Datos de la tarjeta</ng-template>
     <div>
-
-      <button mat-raised-button color="primary">Comprar</button>
+      <button matStepperPrevious mat-raised-button color="primary">Atras</button>
+      <button matStepperNext mat-raised-button color="primary">Siguiente</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+  <mat-step>
+      <ng-template matStepLabel>Comprar</ng-template>
+    <div>
+      <button mat-raised-button color="primary" (click)="comprar()">Comprar</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

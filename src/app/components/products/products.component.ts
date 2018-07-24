@@ -6,10 +6,12 @@ import { Params, ActivatedRoute } from '@angular/router';
 
 
 
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
 
@@ -19,10 +21,12 @@ export class ProductsComponent implements OnInit {
   ) { 
     }
    
+    available = false;
+
     producttoCart=[];
-    products:any;
+    products=[];
     
-    orden = "price";
+    orden ={} ;
     checked = false;
     disabled = false;
     
@@ -34,6 +38,11 @@ export class ProductsComponent implements OnInit {
     order = "price";
     reverse = true;
 
+    filter(valor){
+      this.orden = valor;
+      console.log(this.orden)
+    }
+
     ascen(){
       console.log(this.orden)
     }
@@ -41,11 +50,14 @@ export class ProductsComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => 
           this.products = this.sidenavservice.getProduct(params.id));
+        
+
   }
 
 
   addtoCart(product){
     this.sidenavservice.enlistCart(product);
+    alert(product.name + " agregado con exito!");
   }
 
 

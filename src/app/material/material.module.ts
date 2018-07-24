@@ -15,6 +15,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   imports: [
@@ -33,7 +35,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSlideToggleModule,
     MatRadioModule,
     MatDialogModule,
-    MatStepperModule 
+    MatStepperModule,
+    MatChipsModule,
+    MatInputModule 
   ],
   exports:[
     MatToolbarModule,
@@ -50,7 +54,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSlideToggleModule,
     MatRadioModule,
     MatDialogModule,
-    MatStepperModule 
+    MatStepperModule,
+    MatChipsModule,
+    MatInputModule 
   ],
   declarations: []
 })

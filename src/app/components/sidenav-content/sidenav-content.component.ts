@@ -26,8 +26,4 @@ export class SidenavContentComponent implements OnInit {
     this.detail = this._sidenavservice.getProduct(id);
   }
 
-  // getInfo(){
-  //   this._sidenavservice.getFile()
-  // }
-
 }
