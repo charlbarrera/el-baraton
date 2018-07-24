@@ -7,7 +7,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Make sure you are using Node 8 or later
 
 git clone https://github.com/charlbarrera/el-baraton.git
+
 npm install
+
 npm start
 
 ## Development server
