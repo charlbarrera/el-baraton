@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-// import {HttpClient, HttpHeaders} from '@angular/common/http';
-// import { Observable, Subject, throwError } from 'rxjs';
-// import { map, take, catchError } from 'rxjs/operators';
+
 import { categories } from './categories';
 import { products } from './products';
 import { Subject, Observable } from '../../../node_modules/rxjs';

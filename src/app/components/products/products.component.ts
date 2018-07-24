@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidenavContentService } from '../sidenav-content.service';
 import 'hammerjs/hammer';
-import { Params, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -16,27 +16,11 @@ import { Params, ActivatedRoute } from '@angular/router';
 export class ProductsComponent implements OnInit {
 
   constructor(private sidenavservice: SidenavContentService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute) { }
    
-  ) { 
-    }
-   
-    available = false;
-
-    producttoCart=[];
-    products=[];
+   products=[];
     
     orden ={} ;
-    checked = false;
-    disabled = false;
-    
-    value=50;
-    stock=50;
-    
-    disponible='';
-
-    order = "price";
-    reverse = true;
 
     filter(valor){
       this.orden = valor;

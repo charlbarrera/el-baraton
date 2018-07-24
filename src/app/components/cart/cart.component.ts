@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SidenavContentService } from '../sidenav-content.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
-import { SidenavComponent } from '../../sidenav/sidenav.component';
+
 
 @Component({
   selector: 'app-cart',

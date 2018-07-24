@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import { FormGroup} from '@angular/forms';
 import { SidenavContentService } from '../components/sidenav-content.service';
 import { CartComponent } from '../components/cart/cart.component';
 
@@ -19,8 +19,6 @@ export interface DialogData {
 export class SidenavComponent implements OnInit {
 
   numeroItemsCart:any;
-
-  matBadgeHidden;
 
   matDialag:MatDialogRef<CartComponent>
 
@@ -41,7 +39,6 @@ export class SidenavComponent implements OnInit {
      .subscribe((orden)=> { 
        
         this.numeroItemsCart.push( orden ) ;
-        console.log(orden);
     
     } );
     }   
